@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family:Arial;        
+        }
+        div {
+            border:1px solid #ccc;
+            margin-bottom:10px;
+        }
+        div > img {
+            width:96px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menu: </h1>
+    <a href="/">All Pokemon</a> |    
+    <a href="/show-team">Show Team</a> |
+    <a href="/show-add-page">Add Pokemon</a> |
+
+    <!-- if this is the ALL page, then show the buttons -->
+    <% if (showButtons === true) { %>
+        <form method="POST" action="/delete-all">
+            <button>Delete All</button>
+        </form>
+        <form method="POST" action="/reset-all">
+            <button>Reset All</button>
+        </form>
+    <% } %>
+
+   
+
+    <h1><%= pageTitle %></h1>
+    <% for (x of myPokemonList) { %>
+        <div>
+            <img src="<%= x.image %>" />
+            <p>Name: <%= x.name %></p>
+            <p>Description: <%= x.description %></p>
+
+            <!-- form to delete the current pokemon -->
+            <!-- Use string interpolation to insert the current pokedex id into the url -->
+            <form method="POST" action="/delete-one/<%= x.pokedexId %>">
+                <button>Delete Pokemon</button>
+            </form>
+
+            <!-- form to add the current pokemon to a team-->            
+            <form method="POST" action="/add/<%= x.pokedexId %>">
+                <button>Add to Team</button>
+            </form>
+        </div>
+    <% } %>
+
+
+</body>
+</html>

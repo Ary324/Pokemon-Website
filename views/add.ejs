@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family:Arial;        
+        }
+        form {
+            display:flex;
+            flex-direction: column;
+            gap:4px;
+            width:300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Pokemon</h1>
+    <form method="POST" action="/insert-pokemon">
+        <label>Pokemon Name: </label>
+        <input type="text" name="tbName"/>
+        <label>Pokemon Id: </label>
+        <input type="text" name="tbId"/>
+        <label>Pokemon Description: </label>
+        <!-- a multiline textbox -->
+        <textarea name="tbDesc"></textarea>
+        <label>Pokemon Image: </label>
+        <input type="text" name="tbImage"/>
+        <label>Pokemon Type: </label>
+        <select name="selType">
+            <option value="water">Water</option>
+            <option value="rock">Rock</option>
+            <option value="electric">Electric</option>
+            <option value="electric">Poison</option>
+            <option value="electric">Fire</option>
+        </select>
+        <button>Add</button>
+    </form>
+</body>
+</html>
